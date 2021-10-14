@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import LeftSide from "./parts/LeftSide";
-import RightSide from "./parts/RightSide";
+import LeftSide from "./parts/LeftSide/index";
+import RightSide from "./parts/RightSide/index";
 
 const Home = () => {
   return (
@@ -17,6 +17,8 @@ const Home = () => {
 export default Home;
 const HomeStyles = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 `;

@@ -1,10 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import Clouds from "./Clouds";
+import Details from "./Details";
+import TopCta from "./TopCta";
 
 const LeftSide = () => {
   return (
     <>
-      <LeftSideStyles>Left side</LeftSideStyles>
+      <LeftSideStyles>
+        <TopCta />
+        <Clouds />
+        <Details />
+      </LeftSideStyles>
     </>
   );
 };

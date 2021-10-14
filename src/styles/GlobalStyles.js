@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
         --white-color: #E7E7EB;
         --primary-color: #100E1D;
         --secondary-color: #1E213A;
+        --grey-color: #6e707a;
     }
 
     html, body {
