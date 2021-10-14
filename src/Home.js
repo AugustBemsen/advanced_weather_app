@@ -18,7 +18,7 @@ export default Home;
 const HomeStyles = styled.div`
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   position: relative;
   overflow: hidden;
 `;

@@ -20,5 +20,6 @@ export default LeftSide;
 const LeftSideStyles = styled.div`
   width: 28%;
   background: var(--secondary-color);
-  padding: 2rem;
+  padding: 2rem 0;
+  overflow: hidden;
 `;

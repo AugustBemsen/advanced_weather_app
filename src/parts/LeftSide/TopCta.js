@@ -21,10 +21,11 @@ const TopCtaStyles = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 2rem;
 
   button {
-    width: 161px;
-    height: 40px;
+    width: 140px;
+    height: 35px;
     background: var(--grey-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: 1px solid var(--grey-color);

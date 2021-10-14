@@ -22,16 +22,16 @@ const Clouds = () => {
 export default Clouds;
 const CloudsStyles = styled.div`
   position: relative;
-  margin: 2rem auto;
+  margin: 2rem auto 1.5rem;
   width: 100%;
-  height: 300px;
+  height: 250px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 
   .cloud_main {
-    width: 180px;
+    width: 130px;
   }
 
   .cloud1 {
@@ -39,23 +39,28 @@ const CloudsStyles = styled.div`
     position: absolute;
     left: -50px;
     top: 0;
+    opacity: 0.1;
   }
   .cloud2 {
     width: 150px;
     position: absolute;
     top: 0;
     right: -70px;
+    opacity: 0.1;
   }
   .cloud3 {
     width: 120px;
     position: absolute;
     right: -70px;
     bottom: 0;
+    opacity: 0.1;
   }
   .cloud4 {
     width: 120px;
     position: absolute;
     left: -50px;
     bottom: 0;
+    opacity: 0.1;
+    opacity: 0.1;
   }
 `;
