@@ -29,4 +29,12 @@ const LeftSideStyles = styled.div`
   color: var(--white-color);
   padding: 2rem 0;
   overflow: hidden;
+
+  @media screen and (max-width: 789px) {
+    width: 33%;
+  }
+
+  @media screen and (max-width: 680px) {
+    width: 100%;
+  }
 `;

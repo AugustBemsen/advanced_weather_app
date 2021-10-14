@@ -97,5 +97,14 @@ const NextForecastStyles = styled.div`
     grid-gap: 1.5rem;
     grid-auto-flow: dense;
     column-count: 2;
+
+    @media screen and (max-width: 1024px) {
+      grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+    }
+
+
+    @media screen and (max-width: 789px) {
+      grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+    }
   }
 `;

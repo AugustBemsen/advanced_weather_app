@@ -22,6 +22,10 @@ const TopCtaStyles = styled.div`
   justify-content: space-between;
   padding: 0 2rem;
 
+  @media screen and (max-width: 789px) {
+    padding: 0 1.3rem;
+   }
+
   button {
     width: 140px;
     height: 35px;

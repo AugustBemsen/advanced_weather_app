@@ -21,4 +21,13 @@ const RightSideStyles = styled.div`
   overflow-y: scroll;
   color: var(--white-color);
   background: var(--primary-color);
+
+  @media screen and (max-width: 789px) {
+    width: 68%;
+    padding: 2rem 2.2rem 4rem 2.2rem;
+  }
+
+  @media screen and (max-width: 680px) {
+    width: 100%;
+  }
 `;

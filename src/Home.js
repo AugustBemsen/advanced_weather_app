@@ -21,4 +21,9 @@ const HomeStyles = styled.div`
   height: 100vh;
   position: relative;
   overflow: hidden;
+
+  @media screen and (max-width: 680px) {
+    display: block;
+    overflow: scroll;
+  }
 `;
