@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { MdOutlineGpsFixed } from "react-icons/md";
 import HoldIcon from "../../components/HoldIcon/HoldIcon";
 
-const TopCta = () => {
+const TopCta = ({ btnFx }) => {
   return (
     <>
       <TopCtaStyles>
-        <button>Search for places</button>
+        <button onClick={btnFx}>Search for places</button>
         <HoldIcon icon={<MdOutlineGpsFixed />} />
       </TopCtaStyles>
     </>

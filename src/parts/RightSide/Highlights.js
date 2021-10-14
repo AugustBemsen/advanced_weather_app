@@ -15,7 +15,7 @@ const Highlights = () => {
             type="Wind Status"
             value={
               <h2>
-                7 <span>mph </span>
+                7<span>mph </span>
               </h2>
             }
             footer={
