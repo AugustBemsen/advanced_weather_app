@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { MdOutlineGpsFixed } from "react-icons/md";
+import HoldIcon from "../../components/HoldIcon/HoldIcon";
 
 const TopCta = () => {
   return (
     <>
       <TopCtaStyles>
         <button>Search for places</button>
-        <div>
-          <MdOutlineGpsFixed />
-        </div>
+        <HoldIcon icon={<MdOutlineGpsFixed />} />
       </TopCtaStyles>
     </>
   );
@@ -35,16 +34,5 @@ const TopCtaStyles = styled.div`
     &:hover {
       background: none;
     }
-  }
-
-  div {
-    background: var(--grey-color);
-    width: 25px;
-    height: 25px;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
   }
 `;
