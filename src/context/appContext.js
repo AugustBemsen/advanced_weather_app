@@ -7,7 +7,8 @@ export const StateProvider = ({ children }) => {
     loading: false,
     title: "",
     weather: "",
-    woeid: "",
+    woeid: "1398823",
+    active: {},
   });
 
   return (

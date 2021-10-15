@@ -23,6 +23,7 @@ const Home = () => {
             active: res.data.consolidated_weather[0],
           };
         });
+        console.log(res);
       })
       .catch((err) => console.log(err));
     // eslint-disable-next-line

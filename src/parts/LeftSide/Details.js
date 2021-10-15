@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { IoLocationSharp } from "react-icons/io5";
+import { AppContext } from "../../context/appContext";
+import moment from "moment";
 
 const Details = () => {
+  const [appState] = useContext(AppContext);
+
+  const { active, title } = appState;
+
   return (
     <>
       <DetailsStyles>
         <h1>
-          15<span>&#8451;</span>
+          {Math.round(active.the_temp)}
+          <span>&#8451;</span>
         </h1>
-        <h3>Shower</h3>
-        <p>Today - Fri 5 Jun</p>
+        <h3>{active.weather_state_name}</h3>
+        <p>{moment(active.applicable_date).calendar().split(" ")[0]} - {moment(active.applicable_date).format('ddd')} {moment(active.applicable_date).format('do MMM')}</p>
         <p>
-          <IoLocationSharp /> Abuja
+          <IoLocationSharp /> {title}
         </p>
       </DetailsStyles>
     </>
@@ -52,5 +59,4 @@ const DetailsStyles = styled.div`
       margin-right: 0.3rem;
     }
   }
-
 `;
