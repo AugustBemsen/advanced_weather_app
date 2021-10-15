@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { BsFillPlayFill } from "react-icons/bs";
 import HoldIcon from "../../components/HoldIcon/HoldIcon";
 import Card from "../../components/LargeCard/Card";
 import Progress from "../../components/Progress/Progress";
+import { AppContext } from "../../context/appContext";
 
 const Highlights = () => {
+  // Context API
+  const [appState] = useContext(AppContext);
+
+  const { active } = appState;
+
   return (
     <>
       <HighlightsStyles>
@@ -15,7 +21,8 @@ const Highlights = () => {
             type="Wind Status"
             value={
               <h2>
-                7<span>mph </span>
+                {Math.round(active.wind_speed)}
+                <span>mph </span>
               </h2>
             }
             footer={
@@ -28,16 +35,16 @@ const Highlights = () => {
             type="humidity"
             value={
               <h2>
-                78 <span> &#37; </span>
+                {active.humidity} <span> &#37; </span>
               </h2>
             }
-            footer={<Progress value={70} />}
+            footer={<Progress value={active.humidity} />}
           />
           <Card
             type="Visibility"
             value={
               <h2>
-                78 <span> miles </span>
+                {Math.round(active.visibility)} <span> miles </span>
               </h2>
             }
           />
@@ -45,7 +52,7 @@ const Highlights = () => {
             type="Air pressure"
             value={
               <h2>
-                787 <span> mb </span>
+                {active.air_pressure} <span> mb </span>
               </h2>
             }
           />
