@@ -1,55 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Card from "../../components/SmallCard/Card";
 import HoldIcon from "../../components/HoldIcon/HoldIcon";
-import images from "../../imgs";
+import { AppContext } from "../../context/appContext";
+import moment from "moment";
+import imgController from "../../lib/imgController";
+import tempController from "../../lib/tempController";
 
 const NextForecast = () => {
-  const {
-    // clear,
-    // hail,
-    // heavy_cloud,
-    heavy_rain,
-    // light_cloud,
-    // light_rain,
-    shower,
-    sleet,
-    snow,
-    thunderstorm,
-  } = images;
+  // Context API
+  const [appState] = useContext(AppContext);
 
-  const dummy = [
-    {
-      date: "Tomorrow",
-      img: snow,
-      highest: "16",
-      lowest: "12",
-    },
-    {
-      date: "Tomorrow",
-      img: shower,
-      highest: "16",
-      lowest: "12",
-    },
-    {
-      date: "Tomorrow",
-      img: heavy_rain,
-      highest: "16",
-      lowest: "12",
-    },
-    {
-      date: "Tomorrow",
-      img: thunderstorm,
-      highest: "16",
-      lowest: "12",
-    },
-    {
-      date: "Tomorrow",
-      img: sleet,
-      highest: "16",
-      lowest: "12",
-    },
-  ];
+  const { weather } = appState;
 
   return (
     <>
@@ -60,15 +22,23 @@ const NextForecast = () => {
         </div>
 
         <div className="cards">
-          {dummy.map((card, i) => (
-            <Card
-              highest={card.highest}
-              date={card.date}
-              lowest={card.lowest}
-              img={card.img}
-              key={i}
-            />
-          ))}
+          {weather &&
+            weather.map(
+              (weather, i) =>
+                i > 0 && (
+                  <Card
+                    highest={tempController(weather.max_temp)}
+                    date={
+                      moment(weather.applicable_date)
+                        .calendar()
+                        .split(" ")[0]
+                    }
+                    lowest={tempController(weather.min_temp)}
+                    img={imgController(weather.weather_state_abbr)}
+                    key={i}
+                  />
+                )
+            )}
         </div>
       </NextForecastStyles>
     </>
@@ -101,7 +71,6 @@ const NextForecastStyles = styled.div`
     @media screen and (max-width: 1024px) {
       grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
     }
-
 
     @media screen and (max-width: 789px) {
       grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));

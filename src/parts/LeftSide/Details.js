@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { IoLocationSharp } from "react-icons/io5";
 import { AppContext } from "../../context/appContext";
 import moment from "moment";
+import tempController from "../../lib/tempController";
 
 const Details = () => {
   const [appState] = useContext(AppContext);
@@ -13,7 +14,7 @@ const Details = () => {
     <>
       <DetailsStyles>
         <h1>
-          {Math.round(active.the_temp)}
+          {tempController(active.the_temp)}
           <span>&#8451;</span>
         </h1>
         <h3>{active.weather_state_name}</h3>

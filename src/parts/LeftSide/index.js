@@ -6,7 +6,7 @@ import Clouds from "./Clouds";
 import Details from "./Details";
 import TopCta from "./TopCta";
 
-const LeftSide = ({ setWoeid }) => {
+const LeftSide = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const toggleDrawer = () => setOpenDrawer(!openDrawer);

@@ -4,6 +4,9 @@ import Highlights from "./Highlights";
 import NextForecast from "./NextForecast";
 
 const RightSide = () => {
+
+  
+
   return (
     <>
       <RightSideStyles>
