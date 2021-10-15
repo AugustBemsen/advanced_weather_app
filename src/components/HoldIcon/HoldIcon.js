@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const HoldIcon = ({ icon, white }) => {
+const HoldIcon = ({ icon, white, onClick }) => {
   return (
     <>
-      <HoldIconStyles white={white}>{icon}</HoldIconStyles>
+      <HoldIconStyles onClick={onClick} white={white}>
+        {icon}
+      </HoldIconStyles>
     </>
   );
 };
@@ -20,7 +22,8 @@ const HoldIconStyles = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: ${({ white }) => (white ? "var(--secondary-color)" : "var(--white-color)")};
+  color: ${({ white }) =>
+    white ? "var(--secondary-color)" : "var(--white-color)"};
 
   p {
     font-size: 0.88rem;

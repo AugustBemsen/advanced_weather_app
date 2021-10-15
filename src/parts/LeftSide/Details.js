@@ -8,17 +8,27 @@ import tempController from "../../lib/tempController";
 const Details = () => {
   const [appState] = useContext(AppContext);
 
-  const { active, title } = appState;
+  const { active, title, temp } = appState;
 
   return (
     <>
       <DetailsStyles>
-        <h1>
-          {tempController(active.the_temp)}
-          <span>&#8451;</span>
-        </h1>
+        {temp === "centigrade" ? (
+          <h1>
+            {tempController(active.the_temp, temp)}<span> &#8451;</span>
+          </h1>
+        ) : (
+          <h1>
+            {tempController(active.the_temp, temp)} <span> &#8457;</span>
+          </h1>
+        )}
+
         <h3>{active.weather_state_name}</h3>
-        <p>{moment(active.applicable_date).calendar().split(" ")[0]} - {moment(active.applicable_date).format('ddd')} {moment(active.applicable_date).format('do MMM')}</p>
+        <p>
+          {moment(active.applicable_date).calendar().split(" ")[0]} -{" "}
+          {moment(active.applicable_date).format("ddd")}{" "}
+          {moment(active.applicable_date).format("do MMM")}
+        </p>
         <p>
           <IoLocationSharp /> {title}
         </p>

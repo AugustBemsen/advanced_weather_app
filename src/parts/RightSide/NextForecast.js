@@ -9,16 +9,33 @@ import tempController from "../../lib/tempController";
 
 const NextForecast = () => {
   // Context API
-  const [appState] = useContext(AppContext);
+  const [appState, setAppState] = useContext(AppContext);
 
-  const { weather } = appState;
+  const { weather, temp } = appState;
+
+  const changeUnit = (unit) => {
+    setAppState((prev) => {
+      return {
+        ...prev,
+        temp: unit,
+      };
+    });
+  };
 
   return (
     <>
       <NextForecastStyles>
         <div className="icon_group">
-          <HoldIcon white icon={<p>&#8451;</p>} />
-          <HoldIcon icon={<p>&#8457;</p>} />
+          <HoldIcon
+            white={temp === "centigrade" ? true : false}
+            icon={<p>&#8451;</p>}
+            onClick={() => changeUnit("centigrade")}
+          />
+          <HoldIcon
+            white={temp === "fahrenheit" ? true : false}
+            icon={<p>&#8457;</p>}
+            onClick={() => changeUnit("fahrenheit")}
+          />
         </div>
 
         <div className="cards">
@@ -27,11 +44,9 @@ const NextForecast = () => {
               (weather, i) =>
                 i > 0 && (
                   <Card
-                    highest={tempController(weather.max_temp)}
+                    highest={tempController(weather.max_temp, temp)}
                     date={
-                      moment(weather.applicable_date)
-                        .calendar()
-                        .split(" ")[0]
+                      moment(weather.applicable_date).calendar().split(" ")[0]
                     }
                     lowest={tempController(weather.min_temp)}
                     img={imgController(weather.weather_state_abbr)}
