@@ -6,14 +6,18 @@ import Clouds from "./Clouds";
 import Details from "./Details";
 import TopCta from "./TopCta";
 
-const LeftSide = () => {
+const LeftSide = ({ setWoeid }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const toggleDrawer = () => setOpenDrawer(!openDrawer);
   return (
     <>
       <LeftSideStyles>
-        <Drawer open={openDrawer} close={toggleDrawer} children={<Search />} />
+        <Drawer
+          open={openDrawer}
+          close={toggleDrawer}
+          children={<Search close={toggleDrawer} />}
+        />
         <TopCta btnFx={toggleDrawer} />
         <Clouds />
         <Details />

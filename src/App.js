@@ -1,12 +1,15 @@
+import { StateProvider } from "./context/appContext";
 import Home from "./Home";
 import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
-    <div className="App">
-      <GlobalStyles />
-      <Home />
-    </div>
+    <StateProvider>
+      <div className="App">
+        <GlobalStyles />
+        <Home />
+      </div>
+    </StateProvider>
   );
 }
 

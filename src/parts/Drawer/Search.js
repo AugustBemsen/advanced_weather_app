@@ -1,14 +1,40 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import styled from "styled-components";
+import axios from "axios";
+import { AppContext } from "../../context/appContext";
 
-const Search = () => {
+const Search = ({ close }) => {
+  // context api
+  const [, setAppState] = useContext(AppContext);
+
+  const [query, setQuery] = useState("");
+
+  // fetch query id
+  const handleId = () => {
+    axios
+      .get(`https://www.metaweather.com/api/location/search/?query=${query}`)
+      .then((res) => {
+        setAppState((prev) => {
+          return { ...prev, woeid: res.data[0]?.woeid };
+        });
+        close();
+        setQuery("");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <SearchStyles>
         <div className="input_group">
-          <input placeholder="Search location" type="text" />
-          <button>Search</button>
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search location"
+            type="text"
+          />
+          <button onClick={handleId}>Search</button>
         </div>
         <ul>
           <li>
