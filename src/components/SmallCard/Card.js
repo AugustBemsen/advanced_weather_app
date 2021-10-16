@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { AppContext } from "../../context/appContext";
 
-const Card = ({ date, img, highest, lowest }) => {
+const Card = ({ date, img, highest, lowest, onClick }) => {
   const [appState] = useContext(AppContext);
   const { temp } = appState;
 
   return (
     <>
-      <CardStyles>
+      <CardStyles onClick={onClick}>
         <p>{date}</p>
         <img src={img} alt="cloud" />
         <div>
@@ -38,6 +38,7 @@ const CardStyles = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  cursor: pointer;
 
   img {
     width: 70px;

@@ -11,13 +11,25 @@ const NextForecast = () => {
   // Context API
   const [appState, setAppState] = useContext(AppContext);
 
-  const { weather, temp } = appState;
+  const { weather, temp, active } = appState;
 
   const changeUnit = (unit) => {
     setAppState((prev) => {
       return {
         ...prev,
         temp: unit,
+      };
+    });
+  };
+
+  const changeActive = (id) => {
+    const newActive = weather.filter((wed) => {
+      return wed.id === id;
+    });
+    setAppState((prev) => {
+      return {
+        ...prev,
+        active: newActive[0],
       };
     });
   };
@@ -42,7 +54,7 @@ const NextForecast = () => {
           {weather &&
             weather.map(
               (weather, i) =>
-                i > 0 && (
+                weather.id !== active.id && (
                   <Card
                     highest={tempController(weather.max_temp, temp)}
                     date={
@@ -51,6 +63,7 @@ const NextForecast = () => {
                     lowest={tempController(weather.min_temp, temp)}
                     img={imgController(weather.weather_state_abbr)}
                     key={i}
+                    onClick={() => changeActive(weather.id)}
                   />
                 )
             )}
