@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import Loader from "./components/Loader/Loader";
 import { AppContext } from "./context/appContext";
 import LeftSide from "./parts/LeftSide/index";
 import RightSide from "./parts/RightSide/index";
@@ -10,6 +11,8 @@ const Home = () => {
   const [appState, setAppState] = useContext(AppContext);
 
   const { woeid } = appState;
+
+  const [loading, setLoading] = useState(true);
 
   // get user location
   const key = process.env.REACT_APP_API_KEY;
@@ -38,25 +41,30 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    axios
-      .get(`https://www.metaweather.com/api/location/${woeid}`)
-      .then((res) => {
-        setAppState((prev) => {
-          return {
-            ...prev,
-            weather: res.data?.consolidated_weather,
-            title: res.data?.title,
-            active: res.data.consolidated_weather[0],
-          };
-        });
-      })
-      .catch((err) => console.log(err));
+    setLoading(true);
+    if (woeid) {
+      axios
+        .get(`https://www.metaweather.com/api/location/${woeid}`)
+        .then((res) => {
+          setLoading(false);
+          setAppState((prev) => {
+            return {
+              ...prev,
+              weather: res.data?.consolidated_weather,
+              title: res.data?.title,
+              active: res.data.consolidated_weather[0],
+            };
+          });
+        })
+        .catch((err) => console.log(err));
+    }
     // eslint-disable-next-line
   }, [woeid]);
 
   return (
     <>
       <HomeStyles>
+        {loading && <Loader />}
         <LeftSide />
         <RightSide />
       </HomeStyles>

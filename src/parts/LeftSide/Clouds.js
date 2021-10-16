@@ -35,7 +35,7 @@ const CloudsStyles = styled.div`
   position: relative;
   margin: 2rem auto 1.5rem;
   width: 100%;
-  height: 250px;
+  height: 230px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -46,28 +46,28 @@ const CloudsStyles = styled.div`
   }
 
   .cloud1 {
-    width: 120px;
+    width: 130px;
     position: absolute;
-    left: -50px;
+    left: -60px;
     top: 0;
     opacity: 0.1;
   }
   .cloud2 {
-    width: 150px;
+    width: 130px;
     position: absolute;
     top: 0;
-    right: -70px;
+    right: -50px;
     opacity: 0.1;
   }
   .cloud3 {
-    width: 120px;
+    width: 90px;
     position: absolute;
-    right: -70px;
+    right: -10px;
     bottom: 0;
     opacity: 0.1;
   }
   .cloud4 {
-    width: 120px;
+    width: 133px;
     position: absolute;
     left: -50px;
     bottom: 0;
