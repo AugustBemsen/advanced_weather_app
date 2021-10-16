@@ -56,7 +56,15 @@ const Home = () => {
             };
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          alert("No Result!");
+          setAppState((prev) => {
+            return {
+              ...prev,
+              loading: false,
+            };
+          });
+        });
     }
     // eslint-disable-next-line
   }, [woeid]);

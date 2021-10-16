@@ -38,7 +38,15 @@ const Search = ({ close }) => {
         close();
         setQuery("");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setAppState((prev) => {
+          return {
+            ...prev,
+            loading: false,
+          };
+        });
+        alert("No Result!");
+      });
 
     // eslint-disable-next-line
   }, [state]);
