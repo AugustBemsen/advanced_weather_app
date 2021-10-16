@@ -16,7 +16,7 @@ const LeftSide = () => {
         <Drawer
           open={openDrawer}
           close={toggleDrawer}
-          children={<Search close={toggleDrawer} />}
+          children={<Search close={() => setOpenDrawer(false)} />}
         />
         <TopCta btnFx={toggleDrawer} />
         <Clouds />

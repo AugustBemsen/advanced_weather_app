@@ -19,8 +19,8 @@ const Card = ({ date, img, highest, lowest }) => {
             </>
           ) : (
             <>
-              <p>{highest} "&#8457;"</p>
-              <p>{lowest} "&#8457;"</p>
+              <p>{highest} &#8457;</p>
+              <p>{lowest} &#8457;</p>
             </>
           )}
         </div>

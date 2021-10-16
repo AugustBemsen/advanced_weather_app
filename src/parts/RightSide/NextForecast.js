@@ -48,7 +48,7 @@ const NextForecast = () => {
                     date={
                       moment(weather.applicable_date).calendar().split(" ")[0]
                     }
-                    lowest={tempController(weather.min_temp)}
+                    lowest={tempController(weather.min_temp, temp)}
                     img={imgController(weather.weather_state_abbr)}
                     key={i}
                   />

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import styled from "styled-components";
 import axios from "axios";
@@ -6,14 +6,31 @@ import { AppContext } from "../../context/appContext";
 
 const Search = ({ close }) => {
   // context api
-  const [, setAppState] = useContext(AppContext);
+  const [appState, setAppState] = useContext(AppContext);
+
+  const { state } = appState;
 
   const [query, setQuery] = useState("");
 
-  // fetch query id
-  const handleId = () => {
+  const samples = [
+    {
+      label: "London",
+      value: "london",
+    },
+    {
+      label: "Paris",
+      value: "paris",
+    },
+    {
+      label: "Dubai",
+      value: "dubai",
+    },
+  ];
+
+  useEffect(() => {
+    // fetch query id
     axios
-      .get(`https://www.metaweather.com/api/location/search/?query=${query}`)
+      .get(`https://www.metaweather.com/api/location/search/?query=${state}`)
       .then((res) => {
         setAppState((prev) => {
           return { ...prev, woeid: res.data[0]?.woeid };
@@ -22,6 +39,16 @@ const Search = ({ close }) => {
         setQuery("");
       })
       .catch((err) => console.log(err));
+
+    // eslint-disable-next-line
+  }, [state]);
+
+  // update state
+
+  const updateState = (value) => {
+    setAppState((prev) => {
+      return { ...prev, state: value };
+    });
   };
 
   return (
@@ -34,18 +61,17 @@ const Search = ({ close }) => {
             placeholder="Search location"
             type="text"
           />
-          <button onClick={handleId}>Search</button>
+          <button onClick={() => updateState(query)}>Search</button>
         </div>
         <ul>
-          <li>
-            London <AiOutlineArrowRight className="list_icon" />
-          </li>
-          <li>
-            Paris <AiOutlineArrowRight className="list_icon" />
-          </li>
-          <li>
-            Dubai <AiOutlineArrowRight className="list_icon" />
-          </li>
+          {samples.map((sample, i) => (
+            <li
+              key={i + sample.label}
+              onClick={() => updateState(sample.value)}
+            >
+              {sample.label} <AiOutlineArrowRight className="list_icon" />
+            </li>
+          ))}
         </ul>
       </SearchStyles>
     </>

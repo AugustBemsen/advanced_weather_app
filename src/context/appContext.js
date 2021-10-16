@@ -7,9 +7,10 @@ export const StateProvider = ({ children }) => {
     loading: false,
     title: "",
     weather: "",
-    woeid: "1398823",
+    woeid: "",
     active: {},
     temp: "centigrade",
+    state: "",
   });
 
   return (

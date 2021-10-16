@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { MdOutlineGpsFixed } from "react-icons/md";
 import HoldIcon from "../../components/HoldIcon/HoldIcon";
+import { AppContext } from "../../context/appContext";
 
 const TopCta = ({ btnFx }) => {
+  // fetch data for user's location
+  // context api
+  const [, setAppState] = useContext(AppContext);
+  const key = process.env.REACT_APP_API_KEY;
+
+  const getData = () => {
+    axios
+      .get(`https://geolocation-db.com/json/${key}`)
+      .then((res) => {
+        setAppState((prev) => {
+          return {
+            ...prev,
+            state: res.data?.city,
+          };
+        });
+      })
+      .catch(() => {
+        setAppState((prev) => {
+          return {
+            ...prev,
+            state: "paris",
+          };
+        });
+      });
+  };
+
   return (
     <>
       <TopCtaStyles>
         <button onClick={btnFx}>Search for places</button>
-        <HoldIcon icon={<MdOutlineGpsFixed />} />
+        <HoldIcon onClick={getData} icon={<MdOutlineGpsFixed />} />
       </TopCtaStyles>
     </>
   );
@@ -24,7 +52,7 @@ const TopCtaStyles = styled.div`
 
   @media screen and (max-width: 789px) {
     padding: 0 1.3rem;
-   }
+  }
 
   button {
     width: 140px;

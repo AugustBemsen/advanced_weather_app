@@ -11,6 +11,32 @@ const Home = () => {
 
   const { woeid } = appState;
 
+  // get user location
+  const key = process.env.REACT_APP_API_KEY;
+
+  useEffect(() => {
+    axios
+      .get(`https://geolocation-db.com/json/${key}`)
+      .then((res) => {
+        setAppState((prev) => {
+          return {
+            ...prev,
+            state: res.data?.city,
+          };
+        });
+      })
+      .catch(() => {
+        setAppState((prev) => {
+          return {
+            ...prev,
+            state: "paris",
+          };
+        });
+      });
+
+    // eslint-disable-next-line
+  }, []);
+
   useEffect(() => {
     axios
       .get(`https://www.metaweather.com/api/location/${woeid}`)
@@ -23,7 +49,6 @@ const Home = () => {
             active: res.data.consolidated_weather[0],
           };
         });
-        console.log(res);
       })
       .catch((err) => console.log(err));
     // eslint-disable-next-line
