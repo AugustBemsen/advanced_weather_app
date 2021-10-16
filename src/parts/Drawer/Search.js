@@ -29,25 +29,26 @@ const Search = ({ close }) => {
 
   useEffect(() => {
     // fetch query id
-    axios
-      .get(`https://www.metaweather.com/api/location/search/?query=${state}`)
-      .then((res) => {
-        setAppState((prev) => {
-          return { ...prev, woeid: res.data[0]?.woeid };
+    if (state) {
+      axios
+        .get(`https://www.metaweather.com/api/location/search/?query=${state}`)
+        .then((res) => {
+          setAppState((prev) => {
+            return { ...prev, woeid: res.data[0]?.woeid };
+          });
+          close();
+          setQuery("");
+        })
+        .catch((err) => {
+          setAppState((prev) => {
+            return {
+              ...prev,
+              loading: false,
+            };
+          });
+          alert("No Result!");
         });
-        close();
-        setQuery("");
-      })
-      .catch((err) => {
-        setAppState((prev) => {
-          return {
-            ...prev,
-            loading: false,
-          };
-        });
-        alert("No Result!");
-      });
-
+    }
     // eslint-disable-next-line
   }, [state]);
 
