@@ -10,7 +10,7 @@ export const StateProvider = ({ children }) => {
     woeid: "",
     active: {},
     temp: "centigrade",
-    state: "",
+    state: "paris",
   });
 
   return (

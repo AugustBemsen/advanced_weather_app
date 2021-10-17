@@ -14,8 +14,8 @@ const Search = ({ close }) => {
 
   const samples = [
     {
-      label: "London",
-      value: "london",
+      label: "Lagos",
+      value: "lagos",
     },
     {
       label: "Paris",

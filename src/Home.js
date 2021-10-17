@@ -24,7 +24,7 @@ const Home = () => {
         setAppState((prev) => {
           return {
             ...prev,
-            state: res.data?.city,
+            state: res.data?.city ? res.data?.city : res.data?.country_name,
           };
         });
       })
