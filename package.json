@@ -21,6 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "https://daniel-weather-app.vercel.app/",
   "eslintConfig": {
     "extends": [
       "react-app",
