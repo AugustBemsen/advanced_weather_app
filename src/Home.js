@@ -19,7 +19,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`https://geolocation-db.com/json/${key}`)
+      .get(`/json/${key}`)
       .then((res) => {
         setAppState((prev) => {
           return {
@@ -44,7 +44,7 @@ const Home = () => {
     setLoading(true);
     if (woeid) {
       axios
-        .get(`https://www.metaweather.com/api/location/${woeid}`)
+        .get(`/location/${woeid}/`)
         .then((res) => {
           setLoading(false);
           setAppState((prev) => {
