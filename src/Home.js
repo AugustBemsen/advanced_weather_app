@@ -19,12 +19,12 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`/json/${key}`)
+      .get(`https://geolocation-db.com/json/${key}`)
       .then((res) => {
         setAppState((prev) => {
           return {
             ...prev,
-            state: res.data?.city ? res.data?.city : res.data?.country_name,
+            state: res.data?.city,
           };
         });
       })
@@ -44,7 +44,9 @@ const Home = () => {
     setLoading(true);
     if (woeid) {
       axios
-        .get(`/location/${woeid}/`)
+        .get(
+          `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/${woeid}/`
+        )
         .then((res) => {
           setLoading(false);
           setAppState((prev) => {

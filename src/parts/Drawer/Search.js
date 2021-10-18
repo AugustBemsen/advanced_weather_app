@@ -31,7 +31,9 @@ const Search = ({ close }) => {
     // fetch query id
     if (state) {
       axios
-        .get(`/location/search/?query=${state}`)
+        .get(
+          `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/search/?query=${state}`
+        )
         .then((res) => {
           setAppState((prev) => {
             return { ...prev, woeid: res.data[0]?.woeid };
